@@ -1,28 +1,25 @@
 <?php 
 require_once 'config/database.php';
 require_once 'includes/functions.php';
-
 $pageTitle = "Kontak";
 $message = '';
 
-// Proses form jika ada submit
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nama = clean_input($_POST['nama']);
     $email = clean_input($_POST['email']);
     $pesan = clean_input($_POST['pesan']);
     
-    // Validasi sederhana
     if (empty($nama) || empty($email) || empty($pesan)) {
-        $message = '<div class="error-box">Semua field harus diisi!</div>';
+        $message = '<p class="error">Semua field harus diisi</p>';
     } else {
-        // Simpan ke database (contoh)
+        // Simpan ke database
         try {
-            $stmt = $conn->prepare("INSERT INTO contacts (nama, email, pesan, created_at) VALUES (?, ?, ?, NOW())");
-            // Note: Anda perlu buat tabel 'contacts' dulu
-            // $stmt->execute([$nama, $email, $pesan]);
-            $message = '<div class="success-box">Pesan berhasil dikirim! (Demo)</div>';
+            $sql = "INSERT INTO contacts (nama, email, pesan) VALUES (?, ?, ?)";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute([$nama, $email, $pesan]);
+            $message = '<p class="success">Pesan berhasil dikirim dan disimpan!</p>';
         } catch(PDOException $e) {
-            $message = '<div class="error-box">Terjadi kesalahan. Pastikan tabel sudah dibuat.</div>';
+            $message = '<p class="error">Gagal menyimpan pesan. Pastikan tabel sudah dibuat.</p>';
         }
     }
 }
@@ -30,28 +27,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 include 'includes/header.php';
 ?>
 
-<div class="container">
-    <h1>Hubungi Kami</h1>
-    
+<div class="content">
+    <h1>Hubungi Saya</h1>
     <?php echo $message; ?>
     
-    <form method="POST" action="" class="contact-form">
+    <form method="POST" class="form">
         <div class="form-group">
-            <label for="nama">Nama:</label>
-            <input type="text" id="nama" name="nama" required>
+            <label>Nama</label>
+            <input type="text" name="nama" required>
         </div>
         
         <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+            <label>Email</label>
+            <input type="email" name="email" required>
         </div>
         
         <div class="form-group">
-            <label for="pesan">Pesan:</label>
-            <textarea id="pesan" name="pesan" rows="5" required></textarea>
+            <label>Pesan</label>
+            <textarea name="pesan" rows="5" required></textarea>
         </div>
         
-        <button type="submit" class="btn">Kirim Pesan</button>
+        <button type="submit">Kirim</button>
     </form>
 </div>
 

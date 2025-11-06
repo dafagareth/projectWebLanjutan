@@ -1,23 +1,27 @@
 <?php 
 require_once 'config/database.php';
-$pageTitle = "Tentang Kami";
+$pageTitle = "Tentang";
 include 'includes/header.php';
 ?>
 
-<div class="container">
-    <h1>Tentang Website Ini</h1>
-    <div class="content-box">
-        <p>Website ini dibuat menggunakan:</p>
-        <ul>
-            <li>PHP <?php echo phpversion(); ?></li>
-            <li>MySQL 8.0</li>
-            <li>Docker & Docker Compose</li>
-            <li>Apache Web Server</li>
-        </ul>
-        
-        <h2>Teknologi yang Digunakan</h2>
-        <p>Project ini menggunakan Pure PHP tanpa framework, cocok untuk pembelajaran dasar web development.</p>
-    </div>
+<div class="content">
+    <h1>Tentang Saya</h1>
+    
+    <section class="about-section">
+        <h2>Latar Belakang</h2>
+        <p>Saya mahasiswa jurusan Sistem Informasi yang memiliki ketertarikan dengan Ilmu Komputer</p>
+    </section>
+    
+    <section class="about-section">
+        <h2>Pendidikan</h2>
+        <p><strong>Universitas Putra Indonesia YPTK Padang</strong></p>
+        <p>Information System</p> (2024 - Sekarang)</p>
+    </section>
+    
+    <section class="about-section">
+        <h2>Minat</h2>
+        <p>Anggota Dewan</p>
+    </section>
 </div>
 
 <?php include 'includes/footer.php'; ?>
