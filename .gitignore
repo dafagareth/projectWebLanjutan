@@ -1,0 +1,38 @@
+# File sistem operasi
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Docker
+docker/mysql_data/
+
+# PHP
+vendor/
+composer.phar
+
+# Environment & Config
+.env
+.env.local
+
+# Database
+*.sql
+*.sqlite
+
+# Upload & Cache
+src/uploads/*
+!src/uploads/.gitkeep
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+tmp/
+temp/
+cache/
