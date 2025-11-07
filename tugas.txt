@@ -1,5 +1,0 @@
-Tugas Pemograman Web for Project
-
-- Menggunakan Bahasa Pemograman PHP
-- Menggunakan framework boostrap
-- deadline minggu depan
